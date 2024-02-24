@@ -9,9 +9,13 @@ import { logout } from "./controllers/logout.js";
 import multer from "multer";
 
 const app = express();
+const isDev = app.settings.env === "development";
+const URL = isDev
+  ? "http://localhost:5137"
+  : "https://reflection-blogs.vercel.app";
 
 app.use(express.json());
-app.use(cors());
+app.use(cors({ origin: URL }));
 app.use(cookieParser());
 
 
