@@ -8,8 +8,10 @@ import { login } from "./controllers/login.js";
 import { logout } from "./controllers/logout.js";
 import multer from "multer";
 
+process.env.NODE_ENV = process.env.NODE_ENV || 'development';
+
 const app = express();
-const isDev = app.settings.env === "development";
+const isDev = process.env.NODE_ENV === "development"; 
 const URL = isDev
   ? "http://localhost:5137"
   : "https://reflection-blogs.vercel.app";
